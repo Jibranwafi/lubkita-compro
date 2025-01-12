@@ -1,4 +1,5 @@
 node_modules/
 .DS_Store
 dist/
-.env
+.envnode_modules/
+public/testimoni-seller.mp4

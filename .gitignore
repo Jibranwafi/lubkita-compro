@@ -4,3 +4,5 @@ dist/
 .envnode_modules/
 public/testimoni-seller.mp4
 public/testimoni-seller.mp4
+token.txt
+.env

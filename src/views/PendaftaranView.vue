@@ -113,57 +113,66 @@
 export default {
     name: 'SampleForm',
     data() {
-    return {
+        return {
         formData: {
-        fullName: '',
-        email: '',
-        nik: '',
-        referralCode: '',
-        streetAddress: '',
-        district: '',
-        city: '',
-        province: ''
+            fullName: '',
+            email: '',
+            nik: '',
+            streetAddress: '',
+            district: '',
+            city: '',
+            province: '',
+            referralCode: 'LDRX',
+            referralCode2: 'LDR1'
+            // randomCode is now generated server-side
         },
         isSubmitting: false,
         submitError: null
-    }
+        }
     },
     methods: {
-    async handleSubmit() {
-        if (!this.validateForm()) {
-        return;
-        }
 
-        try {
+
+
+
+    async handleSubmit() {
+      if (!this.validateForm()) {
+        return;
+      }
+
+      try {
         this.isSubmitting = true;
         this.submitError = null;
 
-        // Replace with your Google Apps Script URL
-        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzqH2WBe5Tn8XEfnEQCWCIRV6VqKQKhhhaFipAUtVDLAeVExHMMytWY47Lni1f_LS64/exec';
-
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbytH6JBPO8JFURvFXDV5sH32nN5ssYJSI79lg__m6qdQ4vBEbxq-GIqZwuhFJ1bEwyD/exec';
         const formData = new FormData();
         
         Object.keys(this.formData).forEach(key => {
-            formData.append(key, this.formData[key]);
+          formData.append(key, this.formData[key]);
         });
 
         const response = await fetch(GOOGLE_SHEETS_URL, {
-            method: 'POST',
-            body: formData,
-            mode: 'no-cors'
+          method: 'POST',
+          body: formData,
+          mode: 'no-cors'
         });
 
         alert('Data berhasil dikirim!');
         this.resetForm();
 
-        } catch (error) {
+      } catch (error) {
         console.error('Error submitting form:', error);
         this.submitError = 'Terjadi kesalahan saat mengirim data. Silakan coba lagi.';
         alert(this.submitError);
-        } finally {
+      } finally {
         this.isSubmitting = false;
-        }
-    },
+      }
+    }
+    ,
+
+
+
+
     validateForm() {
         if (!this.formData.fullName.trim()) {
         alert('Silakan masukkan nama lengkap');
@@ -195,19 +204,32 @@ export default {
         }
         return true;
     },
+
+
+
+    generateRandomCode() {
+      // Generate a random number between 1 and 1000000000000000
+      const randomNum = Math.floor(Math.random() * 1000000000000000) + 1;
+      // Format the number with leading zeros if needed
+      const formattedNum = `A${randomNum}`;
+      return `LDR0${formattedNum}`;
+    },
+
+
     resetForm() {
-        this.formData = {
+      this.formData = {
         fullName: '',
         email: '',
         nik: '',
-        referralCode: '',
         streetAddress: '',
         district: '',
         city: '',
-        province: ''
-        };
-        this.submitError = null;
-    }
+        province: '',
+        referralCode: 'LDRX',
+        referralCode2: 'LDRA'
+      };
+      this.submitError = null;
+    },
     }
 }
 </script>

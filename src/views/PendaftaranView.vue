@@ -40,15 +40,6 @@
                 >
                 </div>
                 <div class="flex flex-col">
-                <label class="leading-loose">Kode Referensi</label>
-                <input 
-                    type="text" 
-                    v-model="formData.referralCode"
-                    class="px-4 py-2 border w-full sm:text-sm border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
-                    placeholder="Masukkan kode referensi"
-                >
-                </div>
-                <div class="flex flex-col">
                 <label class="leading-loose">Alamat Jalan</label>
                 <textarea 
                     v-model="formData.streetAddress"

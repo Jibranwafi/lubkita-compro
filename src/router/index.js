@@ -10,6 +10,7 @@ import LubkitaComView from '@/views/LubkitaComView.vue'
 import LdrView from '@/views/LdrView.vue'
 import PtLubkitaView from '@/views/PtLubkitaView.vue'
 import PendaftaranView from '@/views/PendaftaranView.vue'
+import PaketGoldView from '@/views/PaketGoldView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -48,6 +49,11 @@ const router = createRouter({
       path: '/Ldr',
       name: 'Ldr',
       component: LdrView
+    },
+    {
+      path: '/paket-gold',
+      name: 'PaketGold',
+      component: PaketGoldView
     },
     {
       path: '/syarat-ketentuan',

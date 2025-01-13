@@ -1,222 +1,212 @@
-<script setup>
-import TheWelcome from '../components/TheWelcome.vue'
-</script>
-
 <template>
-    <div class="min-h-screen bg-gray-50 py-12 px-4">
-      <div class="max-w-2xl mx-auto bg-white rounded-lg shadow-md p-8">
-        <h2 class="text-2xl font-bold mb-6 text-gray-800">Form Pendaftaran</h2>
-        
-        <!-- Success Message -->
-        <div v-if="submitted" class="mb-6 p-4 bg-green-100 text-green-700 rounded-md">
-          Terima kasih! Data Anda telah berhasil disimpan.
+    <div class="min-h-screen bg-gray-100 py-6 flex flex-col justify-center sm:py-12">
+    <div class="relative py-3 max-w-6xl mx-auto w-full px-4">
+        <div class="relative px-4 py-10 bg-white shadow rounded-3xl sm:p-10">
+        <div class="mx-auto">
+            <div class="flex items-center space-x-5">
+            <div class="pl-2 font-semibold text-xl self-start text-gray-700">
+                <h2 class="leading-relaxed">Formulir Pendaftaran</h2>
+                <p class="text-sm text-gray-500 font-normal leading-relaxed">Silakan lengkapi semua field di bawah ini</p>
+            </div>
+            </div>
+            <form @submit.prevent="handleSubmit" class="divide-y divide-gray-200">
+            <div class="py-8 text-base leading-6 space-y-4 text-gray-700 sm:text-lg sm:leading-7">
+                <div class="flex flex-col">
+                <label class="leading-loose">Nama Lengkap</label>
+                <input 
+                    type="text" 
+                    v-model="formData.fullName"
+                    class="px-4 py-2 border w-full sm:text-sm border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Masukkan nama lengkap Anda"
+                >
+                </div>
+                <div class="flex flex-col">
+                <label class="leading-loose">Email</label>
+                <input 
+                    type="email" 
+                    v-model="formData.email"
+                    class="px-4 py-2 border w-full sm:text-sm border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="email@contoh.com"
+                >
+                </div>
+                <div class="flex flex-col">
+                <label class="leading-loose">NIK</label>
+                <input 
+                    type="text" 
+                    v-model="formData.nik"
+                    maxlength="16"
+                    class="px-4 py-2 border w-full sm:text-sm border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Masukkan 16 digit NIK"
+                >
+                </div>
+                <div class="flex flex-col">
+                <label class="leading-loose">Kode Referensi</label>
+                <input 
+                    type="text" 
+                    v-model="formData.referralCode"
+                    class="px-4 py-2 border w-full sm:text-sm border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Masukkan kode referensi"
+                >
+                </div>
+                <div class="flex flex-col">
+                <label class="leading-loose">Alamat Jalan</label>
+                <textarea 
+                    v-model="formData.streetAddress"
+                    rows="2"
+                    class="px-4 py-2 border w-full sm:text-sm border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Masukkan alamat lengkap"
+                ></textarea>
+                </div>
+                <div class="flex flex-col">
+                <label class="leading-loose">Kecamatan</label>
+                <input 
+                    type="text" 
+                    v-model="formData.district"
+                    class="px-4 py-2 border w-full sm:text-sm border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Masukkan nama kecamatan"
+                >
+                </div>
+                <div class="flex flex-col">
+                <label class="leading-loose">Kabupaten/Kota</label>
+                <input 
+                    type="text" 
+                    v-model="formData.city"
+                    class="px-4 py-2 border w-full sm:text-sm border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Masukkan nama kabupaten/kota"
+                >
+                </div>
+                <div class="flex flex-col">
+                <label class="leading-loose">Provinsi</label>
+                <input 
+                    type="text" 
+                    v-model="formData.province"
+                    class="px-4 py-2 border w-full sm:text-sm border-gray-300 rounded-md focus:outline-none focus:ring-blue-500 focus:border-blue-500"
+                    placeholder="Masukkan nama provinsi"
+                >
+                </div>
+            </div>
+            <div class="pt-4 flex items-center space-x-4">
+                <button 
+                type="button"
+                @click="resetForm"
+                class="flex justify-center items-center w-full text-gray-900 px-4 py-3 rounded-md focus:outline-none hover:bg-gray-100"
+                >
+                <span class="bg-gray-100 px-4 py-2 rounded-md">Batal</span>
+                </button>
+                <button 
+                type="submit"
+                :disabled="isSubmitting"
+                class="bg-blue-500 flex justify-center items-center w-full text-white px-4 py-3 rounded-md focus:outline-none hover:bg-blue-600 disabled:bg-blue-300 disabled:cursor-not-allowed"
+                >
+                <span v-if="isSubmitting">Mengirim...</span>
+                <span v-else>Kirim</span>
+                </button>
+            </div>
+            </form>
         </div>
-  
-        <form @submit.prevent="handleSubmit" class="space-y-6">
-          <!-- Two columns layout -->
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Nama Field -->
-            <div>
-              <label for="nama" class="block text-sm font-medium text-gray-700 mb-1">
-                Nama Lengkap
-              </label>
-              <input
-                id="nama"
-                v-model="formData.nama"
-                type="text"
-                required
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Masukkan nama lengkap"
-              />
-            </div>
-  
-            <!-- Email Field -->
-            <div>
-              <label for="email" class="block text-sm font-medium text-gray-700 mb-1">
-                Email
-              </label>
-              <input
-                id="email"
-                v-model="formData.email"
-                type="email"
-                required
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="contoh@email.com"
-              />
-            </div>
-  
-            <!-- NIK Field -->
-            <div>
-              <label for="nik" class="block text-sm font-medium text-gray-700 mb-1">
-                NIK
-              </label>
-              <input
-                id="nik"
-                v-model="formData.nik"
-                type="text"
-                required
-                maxlength="16"
-                pattern="\d{16}"
-                title="NIK harus 16 digit angka"
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Masukkan 16 digit NIK"
-              />
-              <p v-if="formData.nik && !validateNIK(formData.nik)" class="mt-1 text-sm text-red-600">
-                NIK harus terdiri dari 16 digit angka
-              </p>
-            </div>
-  
-            <!-- Kode Referensi Field -->
-            <div>
-              <label for="kodeReferensi" class="block text-sm font-medium text-gray-700 mb-1">
-                Kode Referensi
-              </label>
-              <input
-                id="kodeReferensi"
-                v-model="formData.kodeReferensi"
-                type="text"
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Masukkan kode referensi (opsional)"
-              />
-            </div>
-  
-            <!-- Jalan Field -->
-            <div class="md:col-span-2">
-              <label for="jalan" class="block text-sm font-medium text-gray-700 mb-1">
-                Alamat Jalan
-              </label>
-              <input
-                id="jalan"
-                v-model="formData.jalan"
-                type="text"
-                required
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Masukkan alamat lengkap"
-              />
-            </div>
-  
-            <!-- Provinsi Field -->
-            <div>
-              <label for="provinsi" class="block text-sm font-medium text-gray-700 mb-1">
-                Provinsi
-              </label>
-              <select
-                id="provinsi"
-                v-model="formData.provinsi"
-                required
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-              >
-                <option v-for="provinsi in provinsiList" :key="provinsi" :value="provinsi">
-                  {{ provinsi }}
-                </option>
-              </select>
-            </div>
-  
-            <!-- Kota Field -->
-            <div>
-              <label for="kota" class="block text-sm font-medium text-gray-700 mb-1">
-                Kota/Kabupaten
-              </label>
-              <input
-                id="kota"
-                v-model="formData.kota"
-                type="text"
-                required
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Masukkan kota/kabupaten"
-              />
-            </div>
-  
-            <!-- Kecamatan Field -->
-            <div>
-              <label for="kecamatan" class="block text-sm font-medium text-gray-700 mb-1">
-                Kecamatan
-              </label>
-              <input
-                id="kecamatan"
-                v-model="formData.kecamatan"
-                type="text"
-                required
-                class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500"
-                placeholder="Masukkan kecamatan"
-              />
-            </div>
-          </div>
-  
-          <!-- Submit Button -->
-          <button
-            type="submit"
-            class="w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors"
-          >
-            Kirim Data
-          </button>
-        </form>
-      </div>
+        </div>
     </div>
-  </template>
+    </div>
+</template>
 
 <script>
-
-import { ref } from 'vue'
-
-const formData = ref({
-  nama: '',
-  email: '',
-  nik: '',
-  jalan: '',
-  provinsi: 'DKI Jakarta', // Default value
-  kota: '',
-  kecamatan: '',
-  kodeReferensi: ''
-})
-
-const submitted = ref(false)
-
-// List of provinces in Indonesia (sample)
-const provinsiList = [
-  'DKI Jakarta',
-  'Jawa Barat',
-  'Jawa Tengah',
-  'Jawa Timur',
-  'Banten',
-  'DI Yogyakarta',
-  'Bali',
-  // Add more provinces as needed
-]
-
-const handleSubmit = () => {
-  // Here you would typically send the data to your backend
-  console.log('Form submitted:', formData.value)
-  submitted.value = true
-  
-  // Reset form after 3 seconds
-  setTimeout(() => {
-    formData.value = {
-      nama: '',
-      email: '',
-      nik: '',
-      jalan: '',
-      provinsi: 'DKI Jakarta',
-      kota: '',
-      kecamatan: '',
-      kodeReferensi: ''
-    }
-    submitted.value = false
-  }, 3000)
-}
-
-// NIK validation (basic 16-digit check)
-const validateNIK = (nik) => {
-  return /^\d{16}$/.test(nik)
-}
-
-
-
 export default {
-    name: 'Pendaftaran',
+    name: 'SampleForm',
     data() {
     return {
-        activeTab: 'lubkita'
+        formData: {
+        fullName: '',
+        email: '',
+        nik: '',
+        referralCode: '',
+        streetAddress: '',
+        district: '',
+        city: '',
+        province: ''
+        },
+        isSubmitting: false,
+        submitError: null
+    }
+    },
+    methods: {
+    async handleSubmit() {
+        if (!this.validateForm()) {
+        return;
+        }
+
+        try {
+        this.isSubmitting = true;
+        this.submitError = null;
+
+        // Replace with your Google Apps Script URL
+        const GOOGLE_SHEETS_URL = 'https://script.google.com/macros/s/AKfycbzqH2WBe5Tn8XEfnEQCWCIRV6VqKQKhhhaFipAUtVDLAeVExHMMytWY47Lni1f_LS64/exec';
+
+        const formData = new FormData();
+        
+        Object.keys(this.formData).forEach(key => {
+            formData.append(key, this.formData[key]);
+        });
+
+        const response = await fetch(GOOGLE_SHEETS_URL, {
+            method: 'POST',
+            body: formData,
+            mode: 'no-cors'
+        });
+
+        alert('Data berhasil dikirim!');
+        this.resetForm();
+
+        } catch (error) {
+        console.error('Error submitting form:', error);
+        this.submitError = 'Terjadi kesalahan saat mengirim data. Silakan coba lagi.';
+        alert(this.submitError);
+        } finally {
+        this.isSubmitting = false;
+        }
+    },
+    validateForm() {
+        if (!this.formData.fullName.trim()) {
+        alert('Silakan masukkan nama lengkap');
+        return false;
+        }
+        if (!this.formData.email.trim() || !this.formData.email.includes('@')) {
+        alert('Silakan masukkan alamat email yang valid');
+        return false;
+        }
+        if (!this.formData.nik.trim() || this.formData.nik.length !== 16) {
+        alert('Silakan masukkan NIK yang valid (16 digit)');
+        return false;
+        }
+        if (!this.formData.streetAddress.trim()) {
+        alert('Silakan masukkan alamat jalan');
+        return false;
+        }
+        if (!this.formData.district.trim()) {
+        alert('Silakan masukkan kecamatan');
+        return false;
+        }
+        if (!this.formData.city.trim()) {
+        alert('Silakan masukkan kabupaten/kota');
+        return false;
+        }
+        if (!this.formData.province.trim()) {
+        alert('Silakan masukkan provinsi');
+        return false;
+        }
+        return true;
+    },
+    resetForm() {
+        this.formData = {
+        fullName: '',
+        email: '',
+        nik: '',
+        referralCode: '',
+        streetAddress: '',
+        district: '',
+        city: '',
+        province: ''
+        };
+        this.submitError = null;
     }
     }
 }

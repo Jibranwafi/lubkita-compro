@@ -4,42 +4,76 @@
     import AboutUsDropdown from './components/AboutUsDropdown.vue';
     import { MenuButton } from '@headlessui/vue';
     import PackageDropdown from './components/PackageDropdown.vue';
+    import { ref } from 'vue'
+
+    const isMenuOpen = ref(false)
 </script>
 
 <template>
   <div class="min-h-screen flex flex-col">
     <nav class="bg-white shadow-lg">
         <div class="w-full mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between h-16 mb-10">
-                <div class="flex items-center w-4/5">
-                    <div class="flex w-1/2 pl-5 space-x-2">
-                        <div>
-                            <img src="/page-home-lubkitalogo-icon.png" alt="Lubkita Logo" class="h-12 w-12 object-cover">
-                        </div>  
-                        <div class="text-2xl font-bold flex flex-col justify-center">LUMBUNG DIGITAL RAKYAT</div>
-                    </div>
-                    <div class="hidden md:flex ml-10 space-x-8 justify-center w-1/2">
-                        <div class="flex flex-col justify-center text-sm text-gray-900 ring-gray-300 hover:bg-gray-50 font-semibold">
-                            <RouterLink to="/">Beranda </RouterLink>
-                        </div>
-                        <PackageDropdown />
-                        <AboutUsDropdown />
+            <div class="flex justify-between h-16">
+                <!-- Logo and Company Name -->
+                <div class="flex items-center">
+                    <div class="flex space-x-2">
+                        <img src="/page-home-lubkitalogo-icon.png" alt="Lubkita Logo" class="h-12 w-12 object-cover">
+                        <div class="text-2xl font-bold flex flex-col justify-center hidden sm:block">LUMBUNG DIGITAL RAKYAT</div>
                     </div>
                 </div>
-                <div class="flex items-center w-1/6">
-                    <div class="w-1/3 h-full flex flex-col justify-center text-center">
+
+                <!-- Desktop Navigation -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <RouterLink to="/" class="text-sm text-gray-900 hover:bg-gray-50 font-semibold">
+                        Beranda
+                    </RouterLink>
+                    <PackageDropdown />
+                    <AboutUsDropdown />
+                </div>
+
+                <!-- Social Icons - Desktop -->
+                <div class="hidden md:flex items-center space-x-4">
+                    <a href="https://www.instagram.com/lubkita.id" target="_blank" rel="noopener noreferrer">
+                        <img src="/page-home-instagram-icon.png" alt="Instagram" class="h-8 w-8">
+                    </a>
+                    <a href="mailto:info@lubkita.com">
+                        <img src="/page-home-email-icon.png" alt="email" class="h-8 w-8">
+                    </a>
+                    <a href="https://wa.me/6282177726868" target="_blank" rel="noopener noreferrer">
+                        <img src="/page-home-whatsapp-icon.png" alt="WhatsApp" class="h-8 w-8">
+                    </a>
+                </div>
+
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button @click="isMenuOpen = !isMenuOpen" class="p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100">
+                        <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path v-if="!isMenuOpen" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                            <path v-else stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Mobile menu -->
+            <div v-show="isMenuOpen" class="md:hidden pb-4">
+                <div class="flex flex-col space-y-4">
+                    <RouterLink to="/" class="text-sm text-gray-900 hover:bg-gray-50 font-semibold px-3 py-2">
+                        Beranda
+                    </RouterLink>
+                    <PackageDropdown />
+                    <AboutUsDropdown />
+                    
+                    <!-- Social Icons - Mobile -->
+                    <div class="flex justify-center space-x-6 pt-4">
                         <a href="https://www.instagram.com/lubkita.id" target="_blank" rel="noopener noreferrer">
-                            <img src="/page-home-instagram-icon.png" alt="Instagram" class="h-8 w-8 mx-auto">
+                            <img src="/page-home-instagram-icon.png" alt="Instagram" class="h-8 w-8">
                         </a>
-                    </div>
-                    <div class="w-1/3 h-fullflex flex-col justify-center text-center">
                         <a href="mailto:info@lubkita.com">
-                            <img src="/page-home-email-icon.png" alt="email" class="h-8 w-8 mx-auto">
+                            <img src="/page-home-email-icon.png" alt="email" class="h-8 w-8">
                         </a>
-                    </div>
-                    <div class="w-1/3 h-full flex flex-col justify-center text-center">
                         <a href="https://wa.me/6282177726868" target="_blank" rel="noopener noreferrer">
-                            <img src="/page-home-whatsapp-icon.png" alt="WhatsApp" class="h-8 w-8 mx-auto">
+                            <img src="/page-home-whatsapp-icon.png" alt="WhatsApp" class="h-8 w-8">
                         </a>
                     </div>
                 </div>

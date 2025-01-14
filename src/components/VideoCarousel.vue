@@ -143,7 +143,10 @@ function playCurrentVideo() {
   const currentVideo = videoRefs.value[currentIndex.value]
   if (currentVideo) {
     currentVideo.play().catch(error => {
-      console.log('Video autoplay prevented:', error)
+      console.error('Video playback error:', error.message);
+      // Check if video is actually loaded
+      console.log('Video ready state:', currentVideo.readyState);
+      console.log('Video source:', currentVideo.src);
     })
   }
 }

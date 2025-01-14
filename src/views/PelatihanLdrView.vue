@@ -28,7 +28,7 @@ const filteredVideos = computed(() => {
 <div class="min-h-screen bg-gray-50">
 
     <!-- Hero Section -->
-    <div class="flex w-full">
+    <div class="flex w-full flex-col lg:flex-row">
         <!--
         <div class="w-1/4 flex flex-col border-2 border-black p-3 bg-green-300">
             <div class="border-2 border-black p-3">LUMBUNG DIGITAL RAKYAT</div>
@@ -52,7 +52,7 @@ const filteredVideos = computed(() => {
         </div>
         -->
 
-        <div class="mx-auto w-4/5 flex flex-col  p-3 bg-yellow-200">
+        <div class="w-full lg:w-4/5 flex flex-col p-3 bg-yellow-200">
             <div class="bg-slate-100 rounded-xl mx-5">
                 <div class="p-5 flex">
                     <div class="rounded-xl  p-3 w-full">
@@ -83,7 +83,7 @@ const filteredVideos = computed(() => {
 
 
 
-            <div class="grid grid-cols-3 gap-10 p-5 bg-white-200 mt-5 rounded-t-3xl">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 lg:gap-10 p-5 bg-white-200 mt-5 rounded-t-3xl">
                 <div v-for="video in filteredVideos" 
                      :key="video.id" 
                      class="flex flex-col bg-white p-3 cursor-pointer hover:bg-slate-100` transition-colors rounded-3xl"
@@ -113,20 +113,20 @@ const filteredVideos = computed(() => {
             
         </div>
 
-        <div class="w-1/5 flex flex-col p-3 bg-slate-200">
-            <div class="bg-white p-10 flex flex-col rounded-3xl">
+        <div class="w-full lg:w-1/5 flex flex-col p-3 bg-slate-200">
+            <div class="bg-white p-5 lg:p-10 flex flex-col rounded-3xl">
                 <div class="flex justify-center">
-                    <img src="/page-videopelatihan-selamatdatang.png" alt="Selamat Datang" class="w-full h-auto">
+                    <img src="/page-videopelatihan-selamatdatang.png" alt="Selamat Datang" class="w-full max-w-[300px] h-auto">
                 </div>
-                <div class="text-center mt-6 font-bold text-2xl">Selamat Datang</div>
+                <div class="text-center mt-6 font-bold text-xl lg:text-2xl">Selamat Datang</div>
             </div>
-            <div class=" p-3 justify-center flex py-10">
-                <RouterLink to="/pendaftaran" class="bg-yellow-200 w-5/6 rounded-full text-center font-bold py-4 text-2xl hover:bg-yellow-400 shadow-lg">
+            <div class="p-3 justify-center flex py-5 lg:py-10">
+                <RouterLink to="/pendaftaran" class="bg-yellow-200 w-5/6 rounded-full text-center font-bold py-3 lg:py-4 text-xl lg:text-2xl hover:bg-yellow-400 shadow-lg">
                     Pendaftaran
                 </RouterLink>
             </div>
             <div class="p-3 flex flex-col rounded-3xl bg-white">
-                <div class="text-center font-bold text-3xl my-5">
+                <div class="text-center font-bold text-2xl lg:text-3xl my-3 lg:my-5">
                     Kontak kami
                 </div>
 
@@ -138,7 +138,7 @@ const filteredVideos = computed(() => {
                     href="https://www.instagram.com/lubkita.id" 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    class="flex px-2 py-6 cursor-pointer hover:bg-gray-50 transition-all transform hover:-translate-y-1"
+                    class="flex px-2 py-4 lg:py-6 cursor-pointer hover:bg-gray-50 transition-all transform hover:-translate-y-1"
                 >
                     <div class="aspect-square w-1/3">
                         <img src="/page-videopelatihan-instagram-icon.png" alt="Instagram" class="w-full h-full object-cover">
@@ -154,7 +154,7 @@ const filteredVideos = computed(() => {
                     href="https://www.tiktok.com/@lubkita.id" 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    class="flex px-2 py-6 cursor-pointer hover:bg-gray-50 transition-all transform hover:-translate-y-1"
+                    class="flex px-2 py-4 lg:py-6 cursor-pointer hover:bg-gray-50 transition-all transform hover:-translate-y-1"
                 >
                     <div class="aspect-square w-1/3">
                         <img src="/page-videopelatihan-tiktok-icon.png" alt="TikTok" class="w-full h-full object-cover">
@@ -170,7 +170,7 @@ const filteredVideos = computed(() => {
                     href="https://wa.me/6282177726868" 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    class="flex px-2 py-6 cursor-pointer hover:bg-gray-50 transition-all transform hover:-translate-y-1"
+                    class="flex px-2 py-4 lg:py-6 cursor-pointer hover:bg-gray-50 transition-all transform hover:-translate-y-1"
                 >
                     <div class="aspect-square w-1/3">
                         <img src="/page-videopelatihan-whatsappcolor-icon.png" alt="Whatsapp" class="w-full h-full object-cover">
@@ -186,7 +186,7 @@ const filteredVideos = computed(() => {
                     href="https://www.lubkita.com" 
                     target="_blank" 
                     rel="noopener noreferrer" 
-                    class="flex px-2 py-6 cursor-pointer hover:bg-gray-50 transition-all transform hover:-translate-y-1"
+                    class="flex px-2 py-4 lg:py-6 cursor-pointer hover:bg-gray-50 transition-all transform hover:-translate-y-1"
                 >
                     <div class="aspect-square w-1/3">
                         <img src="/page-videopelatihan-website-icon.png" alt="website" class="w-full h-full object-cover">

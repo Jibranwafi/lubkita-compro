@@ -22,22 +22,22 @@ const video_home = ref([
     <!-- Hero Section -->
     <div class="flex flex-col">
 
-        <div class="p-4 md:p-8 mx-4 md:mx-10 rounded-b-3xl bg-cover bg-top bg-no-repeat" 
+        <div class="p-8 mx-10 rounded-b-3xl bg-cover bg-top bg-no-repeat" 
              style="background-image: url('/page-home-header1.jpg')">
-            <div class="flex flex-col md:flex-row md:space-x-32">
-                <div class="w-full md:w-1/2 flex flex-col p-4 md:p-9">
-                    <div class="text-3xl md:text-5xl font-bold text-white">
+            <div class="flex space-x-32">
+                <div class="w-1/2 flex flex-col p-9 ">
+                    <div class="text-5xl font-bold text-white">
                         Lumbung Digital Rakyat (LDR) Mitra sukses pengusaha desa.
                     </div>
-                    <div class="text-xl md:text-2xl text-white my-5 md:my-10 pt-48 md:pt-20">
+                    <div class="text-2xl text-white my-10 pt-20">
                         Lumbung Digital Rakyat (LDR), kunci sukses dalam memperluas jangkauan bisnis anda di Lubkita.com, platform dikhususkan untuk mengembangkan memberdayakan ekonomi lokal dalam digitalisasi dan pelatihan.
                     </div>
-                    <RouterLink to="/pendaftaran" class="text-2xl md:text-3xl text-center p-3 bg-yellow-400 rounded-2xl font-bold w-full md:w-1/2">
+                    <RouterLink to="/pendaftaran" class="text-3xl text-center p-3 bg-yellow-400 rounded-2xl font-bold w-1/2">
                         Pendaftaran
                     </RouterLink>
                 </div>
 
-                <div class="w-full md:w-1/2 mt-6 md:mt-0 h-full flex flex-col justify-center text-right md:pl-32 md:pt-32"> 
+                <div class="w-1/2 h-full flex flex-col justify-center text-right pl-32 my-auto"> 
                     <VideoCarousel :slides="video_home" />
                     <!--
                     <Carousel :slides="slides">
@@ -73,32 +73,32 @@ const video_home = ref([
         </div>
 
 
-        <div class="w-11/12 md:w-5/6 flex flex-col md:flex-row justify-center mx-auto my-10 shadow-lg rounded-2xl p-5 border">
-            <div class="flex w-full md:w-1/3 hover:bg-slate-300 mb-4 md:mb-0">
+        <div class="w-5/6 flex justify-center mx-auto my-10 shadow-lg rounded-2xl p-5 border">
+            <div class="flex w-1/3 hover:bg-slate-300">
                 <div class="p-2 w-1/5">
-                    <img src="/page-home-networking-icon.png" alt="networking" class="h-12 w-12 md:h-16 md:w-16 mx-auto">
+                    <img src="/page-home-networking-icon.png" alt="networking" class="h-16 w-16 mx-auto">
                 </div>
-                <div class="p-2 w-4/5 font-bold flex flex-col justify-center text-sm md:text-base">OUR NETWORKING</div>
+                <div class="p-2 w-4/5 font-bold flex flex-col justify-center">OUR NETWORKING</div>
             </div>
-            <RouterLink to="/pelatihan-ldr" class="flex w-full md:w-1/3 hover:bg-slate-300 mb-4 md:mb-0">
+            <RouterLink to="/pelatihan-ldr" class="flex w-1/3 hover:bg-slate-300">
                 <div class="p-2 w-1/5">
-                    <img src="/page-home-pelatihan-icon.png" alt="pelatihan" class="h-12 w-12 md:h-16 md:w-16 mx-auto">
+                    <img src="/page-home-pelatihan-icon.png" alt="pelatihan" class="h-16 w-16 mx-auto">
                 </div>
-                <div class="p-2 w-4/5 font-bold flex flex-col justify-center text-sm md:text-base">PELATIHAN DIGITAL</div>
+                <div class="p-2 w-4/5 font-bold flex flex-col justify-center">PELATIHAN DIGITAL</div>
             </RouterLink>
-            <RouterLink to="/syarat-ketentuan" class="flex w-full md:w-1/3 hover:bg-slate-300">
+            <RouterLink to="/syarat-ketentuan" class="flex w-1/3 hover:bg-slate-300">
                 <div class="p-2 w-1/5">
-                    <img src="/page-home-credential-icon.png" alt="credential" class="h-12 w-12 md:h-16 md:w-16 mx-auto">
+                    <img src="/page-home-credential-icon.png" alt="credential" class="h-16 w-16 mx-auto">
                 </div>
-                <div class="p-2 w-4/5 font-bold flex flex-col justify-center text-sm md:text-base">SYARAT & KETENTUAN</div>
+                <div class="p-2 w-4/5 font-bold flex flex-col justify-center">SYARAT & KETENTUAN</div>
             </RouterLink>
         </div>
-        <div class="flex flex-col bg-amber-300 mx-4 md:mx-10 rounded-t-3xl">
-            <div class="p-5 md:p-10 text-center flex flex-col">
-                <div class="text-3xl md:text-4xl">Review</div>
-                <div class="text-4xl md:text-5xl font-bold">Pengguna LDR</div>
+        <div class="flex flex-col bg-amber-300 mx-10 rounded-t-3xl">
+            <div class="p-10 text-center flex flex-col">
+                <div class="text-4xl">Review</div>
+                <div class="text-5xl font-bold">Pengguna LDR</div>
             </div>
-            <div class="px-4 md:px-20 pb-10 md:pb-20 pt-5 rounded-full flex justify-center"> <!-- Adjust height as needed -->
+            <div class="px-20 pb-20 pt-5 rounded-full flex justify-center"> <!-- Adjust height as needed -->
                 <VideoCarousel :slides="video_sliders" />
             </div>
             <!--

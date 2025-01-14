@@ -5,7 +5,7 @@
         <div class="mx-auto">
             <div class="flex items-center space-x-5">
             <div class="pl-2 font-semibold text-xl self-start text-gray-700">
-                <h2 class="leading-relaxed">Formulir Pendaftaran</h2>
+                <h2 class="leading-relaxed">Formulir Pendaftaran LDR</h2>
                 <p class="text-sm text-gray-500 font-normal leading-relaxed">Silakan lengkapi semua field di bawah ini</p>
             </div>
             </div>

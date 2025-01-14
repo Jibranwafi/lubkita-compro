@@ -1,19 +1,19 @@
 <script setup>
 import Carousel from '@/components/Carousel.vue';
 import TheWelcome from '../components/TheWelcome.vue'
-
+import CustomVideoPlayer from '../components/VideoPlayer.vue'
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import VideoCarousel from '@/components/VideoCarousel.vue';
 
 const slides = ref([{}, {}, {}]) 
+const video_sliders = ref([{ videoUrl: '/testimoni-seller.mp4' }])
+const video_home = ref([{ videoUrl: '/lubkita-animasi.mp4' }])
 
-const video_sliders = ref([
-    { videoUrl: '/testimoni-seller.mp4' }, // if it's in public/videos folder
-])
-
-const video_home = ref([
-    { videoUrl: '/lubkita-animasi.mp4' }, // if it's in public/videos folder
-])
+// Event handlers if needed
+const onPlayerReady = (player) => console.log('Player is ready', player)
+const onPlay = () => console.log('Video started playing')
+const onPause = () => console.log('Video paused')
+const onEnded = () => console.log('Video ended')
 </script>
 
 <template>
@@ -68,6 +68,18 @@ const video_home = ref([
                     </Carousel>
                     -->
 
+                </div>
+                <div class="w-full md:w-1/2 mt-6 md:mt-0 h-full flex flex-col justify-center text-right md:pl-32 md:pt-32"> 
+                    <CustomVideoPlayer
+                        source='/lubkita-animasi.mp4'
+                        type="video/mp4"
+                        :autoplay="false"
+                        :controls="true"
+                        @ready="onPlayerReady"
+                        @play="onPlay"
+                        @pause="onPause"
+                        @ended="onEnded"
+                    />
                 </div>
             </div>
         </div>

@@ -10,6 +10,9 @@ export default defineConfig({
     vue(),
     vueDevTools(),
   ],
+  optimizeDeps: {
+    include: ['dplayer']
+  },
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

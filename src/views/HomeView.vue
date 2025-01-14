@@ -1,19 +1,27 @@
 <script setup>
 import Carousel from '@/components/Carousel.vue';
 import TheWelcome from '../components/TheWelcome.vue'
-import CustomVideoPlayer from '../components/VideoPlayer.vue'
 import { ref, onMounted, onBeforeUnmount, nextTick } from 'vue'
 import VideoCarousel from '@/components/VideoCarousel.vue';
 
-const slides = ref([{}, {}, {}]) 
+
+import VideoPlayer from '@/components/VideoPlayer.vue';
+import PlyrVideoPlayer from '@/components/PlyrVideoPLayer.vue'
+import MediaElementPlayer from '@/components/MediaElementPlayer.vue';
+import DPlayerComponent from '@/components/DPlayerComponent.vue';
+
+const slides = ref([{}, {}, {}])
 const video_sliders = ref([{ videoUrl: '/testimoni-seller.mp4' }])
 const video_home = ref([{ videoUrl: '/lubkita-animasi.mp4' }])
+const videoUrl = ref('/lubkita-animasi.mp4')
 
-// Event handlers if needed
-const onPlayerReady = (player) => console.log('Player is ready', player)
-const onPlay = () => console.log('Video started playing')
-const onPause = () => console.log('Video paused')
-const onEnded = () => console.log('Video ended')
+const components = {
+  PlyrVideoPlayer,
+  DPlayerComponent,
+  MediaElementPlayer,
+  VideoPlayer
+}
+
 </script>
 
 <template>
@@ -69,18 +77,6 @@ const onEnded = () => console.log('Video ended')
                     -->
 
                 </div>
-                <div class="w-full md:w-1/2 mt-6 md:mt-0 h-full flex flex-col justify-center text-right md:pl-32 md:pt-32"> 
-                    <CustomVideoPlayer
-                        source='/lubkita-animasi.mp4'
-                        type="video/mp4"
-                        :autoplay="false"
-                        :controls="true"
-                        @ready="onPlayerReady"
-                        @play="onPlay"
-                        @pause="onPause"
-                        @ended="onEnded"
-                    />
-                </div>
             </div>
         </div>
 
@@ -110,8 +106,30 @@ const onEnded = () => console.log('Video ended')
                 <div class="text-3xl md:text-4xl">Review</div>
                 <div class="text-4xl md:text-5xl font-bold">Pengguna LDR</div>
             </div>
-            <div class="px-4 md:px-20 pb-10 md:pb-20 pt-5 rounded-full flex justify-center"> <!-- Adjust height as needed -->
+            <div class="px-4 md:px-20 pb-10 md:pb-20 pt-5 rounded-full flex flex-col justify-center"> <!-- Adjust height as needed -->
                 <VideoCarousel :slides="video_sliders" />
+                <div class="mb-8">
+                    <video
+                        class="w-full max-w-2xl rounded-lg shadow-lg"
+                        controls
+                        controlsList="nodownload"
+                    >
+                        <source :src="videoUrl" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                <PlyrVideoPlayer />
+                <MediaElementPlayer />
+                <DPlayerComponent />
+                <VideoPlayer 
+                    :video-url="videoUrl"
+                    @play="onPlay"
+                    @pause="onPause"
+                />
+
+
+
+                
             </div>
             <!--
             <div class="flex justify-center w-full border-2 border-black h-[600px] p-8">

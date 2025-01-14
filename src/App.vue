@@ -18,7 +18,7 @@
                 <div class="flex items-center">
                     <div class="flex space-x-2">
                         <img src="/page-home-lubkitalogo-icon.png" alt="Lubkita Logo" class="h-12 w-12 object-cover">
-                        <div class="text-2xl font-bold flex flex-col justify-center hidden sm:block">LUMBUNG DIGITAL RAKYAT</div>
+                        <div class="text-2xl font-bold flex flex-col justify-center sm:block">LUMBUNG DIGITAL RAKYAT</div>
                     </div>
                 </div>
 

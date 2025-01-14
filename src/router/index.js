@@ -11,6 +11,7 @@ import LdrView from '@/views/LdrView.vue'
 import PtLubkitaView from '@/views/PtLubkitaView.vue'
 import PendaftaranView from '@/views/PendaftaranView.vue'
 import PaketGoldView from '@/views/PaketGoldView.vue'
+import PendaftaranLDRView from '@/views/PendaftaranLDRView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -49,6 +50,11 @@ const router = createRouter({
       path: '/Ldr',
       name: 'Ldr',
       component: LdrView
+    },
+    {
+      path: '/pendaftaran/LDR0A',
+      name: 'LDR0A',
+      component: PendaftaranLDRView
     },
     {
       path: '/paket-gold',

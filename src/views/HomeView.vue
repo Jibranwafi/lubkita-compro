@@ -40,9 +40,14 @@ const components = {
                     <div class="text-xl md:text-2xl text-white my-5 md:my-10 pt-48 md:pt-20">
                         Lumbung Digital Rakyat (LDR), kunci sukses dalam memperluas jangkauan bisnis anda di Lubkita.com, platform dikhususkan untuk mengembangkan memberdayakan ekonomi lokal dalam digitalisasi dan pelatihan.
                     </div>
-                    <RouterLink to="/pendaftaran" class="text-2xl md:text-3xl text-center p-3 bg-yellow-400 rounded-2xl font-bold w-full md:w-1/2">
+                    <div class="flex space-x-10">
+                    <RouterLink to="/pendaftaran" class="text-2xl md:text-3xl text-center p-3 bg-yellow-400 rounded-2xl font-bold w-full md:w-1/2 flex flex-col justify-center">
                         Pendaftaran
                     </RouterLink>
+                    <RouterLink to="/pendaftaran/LDR0A" class="text-2xl md:text-3xl text-center p-3 bg-yellow-400 rounded-2xl font-bold w-full md:w-1/2">
+                        Pendaftaran LDR0A
+                    </RouterLink>
+                    </div>
                 </div>
 
                 <div class="w-full md:w-1/2 mt-6 md:mt-0 h-full flex flex-col justify-center text-right md:pl-32 md:pt-32"> 
